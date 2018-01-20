@@ -5,13 +5,12 @@ namespace weesee\pdflabel;
  * PDFLabel
  * 
  */
-use yii\base\Widget;
+use yii\base\Component;
 use yii\helpers\Html;
-use Uskur\PdfLabel\PdfLabel;
+use Uskur\PdfLabel\PdfLabel as UskurPdfLabel;
 
-class PdfLabelWidget extends Widget{
-	
-	public $pdfLabel;
+class PdfLabel extends Component
+{
 	
 	/* Output destination:
 	 * I: send the file inline to the browser (default).
@@ -36,19 +35,22 @@ class PdfLabelWidget extends Widget{
 	const OUTPUT_SAVE_FILE_AND_BROWSER_DOWNLOAD = 'FD';
 	const OUTPUT_BASE64 = 'E';
 	
-	public $output = self::OUTPUT_BROWSER_INLINE;
 	public $font = 'times';
 	public $size = 10;
+	public $downloadFilename = "output.pdf";
 	
 	public $labels;
+
+	protected $pdfLabel;
 	
 	public function init()
 	{
-		$this->pdfLabel = new PdfLabel("5160");
+		$this->pdfLabel = new UskurPdfLabel("5160");
+		$this->pdfLabel->AddPage();
 		$this->pdfLabel->SetFont($this->font, '', $this->size);
-		if (is_array($options['labels']))
-			foreach($options['labels'] as $label)
-				$this->pdfLabel->addLabel($label);
+		if (is_array($this->labels))
+			foreach($this->labels as $label)
+				$this->addLabel($label);
 	}
 	
 	public function addLabel($content)
@@ -56,7 +58,8 @@ class PdfLabelWidget extends Widget{
 		$this->pdfLabel->addLabel($content);
 	}
 	
-	public function run() {
-		return $this->pdfLabel->Output();
+	public function render()
+	{	
+		$this->pdfLabel->Output($this->downloadFilename,self::OUTPUT_BROWSER_INLINE);
 	}
 }

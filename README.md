@@ -28,15 +28,25 @@ Usage
 
 Once the extension is installed, simply use it in your code by  :
 
+View:
+
 ```php 
 <?php
-    use weesee\pdflabel\PdfLabelWidget;
-
-    echo Html::a("Label-PDF",PdfLabelWidget::widget([
-        'labels' => ["hello world"],
-    ]));
+    echo Html::a("Download Label-PDF",['site/downloadpdf']);
 ?>
 ```
+
+Controller:
+
+    use weesee\pdflabel\PdfLabel;
+    ...
+    public function actionPdfLabelDownload()
+    {
+        $pdfLabel = new PdfLabel();
+        $pdfLabel->addLabel("hello world 1");
+        $pdfLabel->addLabel("hello world 2");
+        $pdfLabel->render();
+    }
 
 Author & Licence
 ----------------
