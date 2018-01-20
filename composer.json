@@ -1,0 +1,26 @@
+{
+    "name": "weesee/yii2-pdflabel",
+    "type": "yii2-extension",
+    "description": "Extension to print labels with PDF",
+    "keywords": ["yii2", "label", "pdf", "print"],
+    "license": "GNU General Public License v3.0",
+    "support": {
+        "issues": "https://github.com/weesee/yii2-pdflabel/issues",
+        "source": "https://github.com/weesee/yii2-pdflabel"
+    },
+    "authors": [
+        {
+            "name": "WeeSee",
+            "email": "weesee@web.de"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "~2.0.0",
+        "uskur/pdf-label": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "weesee\\pdflabel\\": ""
+        }
+    }
+}
