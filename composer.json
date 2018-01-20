@@ -3,7 +3,7 @@
     "type": "yii2-extension",
     "description": "Extension to print labels with PDF",
     "keywords": ["yii2", "label", "pdf", "print"],
-    "license": "GNU General Public License v3.0",
+    "license": "GPL-3.0",
     "support": {
         "issues": "https://github.com/weesee/yii2-pdflabel/issues",
         "source": "https://github.com/weesee/yii2-pdflabel"
