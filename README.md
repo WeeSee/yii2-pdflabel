@@ -41,6 +41,6 @@ Once the extension is installed, simply use it in your code by  :
 Author & Licence
 ----------------
 
-WeeSee<weesee@web.de>
+WeeSee <weesee@web.de>
 
 GNU GENERAL PUBLIC LICENSE, Version 3, 29 June 2007
