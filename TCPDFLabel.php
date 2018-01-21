@@ -2,23 +2,36 @@
 namespace weesee\pdflabel;
 
 /**
- * PDFLabel
+ * TCPDFLabel
+ *
+ * This is a proxy class for Uskur\PdfLabel\PdfLabel.
+ * It is used to directly access TCPDF for setting borders.
  * 
+ * @link https://github.com/WeeSee/yii2-pdflabel
+ * @copyright Copyright (c) 2018 WeeSee
+ * @license  https://github.com/WeeSee/yii2-pdflabel/blob/master/LICENSE
  */
-use yii\base\Component;
-use yii\helpers\Html;
+
 use Uskur\PdfLabel\PdfLabel as BasePdfLabel;
 
 class TCPDFLabel extends BasePdfLabel
 {
-    
+    /**
+     * add one Label using HTML format
+     * @param string $html
+     * @param bool $border
+     */
 	public function addExtendedHtmlLabel($html,$border=false)
     {
         list ($width, $height) = $this->newLabelPosition();
         $this->writeHTMLCell($width, $height, null, null, $html, $border, 0, false);
-        //$this->writeHTMLCell($width, $height, null, null, $html);
     }
     
+	/**
+     * add one Label using plain text format
+     * @param string $text
+     * @param bool $border
+     */
     public function addExtendedLabel($text,$border=false)
     {
         list ($width, $height) = $this->newLabelPosition();

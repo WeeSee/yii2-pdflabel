@@ -145,7 +145,15 @@ class PdfLabel extends Component
 	public $border = false;
 	
 	
-	
+	/**
+     * Initialize the class with options from user
+     * The options are set using Yii2 init mechanism for Components
+     * Options:
+     * - labelType: string (e.g. "5160") or array with format spec
+     * - font, size
+     * - author, creator, title, keywords, subject: 
+     * - offsetEmptyLabels: integer. How many labels to skip at the beginning
+     */
 	public function init()
 	{
 		parent::init();
