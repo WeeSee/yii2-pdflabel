@@ -1,19 +1,23 @@
 <?php
-namespace weesee\pdflabel;
 
 /**
  * TCPDFLabel
  *
- * This is a proxy class for Uskur\PdfLabel\PdfLabel.
- * It is used to directly access TCPDF for setting borders.
- * 
  * @link https://github.com/WeeSee/yii2-pdflabel
  * @copyright Copyright (c) 2018 WeeSee
  * @license  https://github.com/WeeSee/yii2-pdflabel/blob/master/LICENSE
  */
 
+namespace weesee\pdflabel;
+
 use Uskur\PdfLabel\PdfLabel as BasePdfLabel;
 
+/**
+ * This is a proxy class for Uskur\PdfLabel\PdfLabel.
+ * It is used to directly access TCPDF for setting borders.
+ *
+ * @author WeeSee <weesee@web.de>
+ */
 class TCPDFLabel extends BasePdfLabel
 {
     /**

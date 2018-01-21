@@ -14,6 +14,12 @@ use yii\base\Component;
 use yii\helpers\Html;
 use weesee\pdflabel\TCPDFLabel;
 
+/**
+ * Ths class PdfLabel is a Yii2 Component to
+ * print labes on PDF. There are multipe label
+ * formats supported in letter and A4 format,
+ * e.g. Avery 5160.
+ */
 class PdfLabel extends Component
 {
 	
