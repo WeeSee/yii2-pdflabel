@@ -37,13 +37,14 @@ View:
 ```
 
 Controller (assuming we have a DataProvider ```$labelDataProvider```
-with models containing ```name``` and ```town``` properties):
+(here: an ```ArrayDataProvider```) with models containing
+```name``` and ```town``` properties):
 
     use weesee\pdflabel\PdfLabel;
     ...
     public function actionDownloadpdf()
     $pdfLabel = new PdfLabel([
-        'labelType' => '5160',
+        'labelName' => '5160',
         'dataProvider' => $labelDataProvider,
         'renderLabel' => function($model, $key, $index) {
             return $model["name"]."\n".$model["town"];
