@@ -36,7 +36,8 @@ View:
 ?>
 ```
 
-Controller:
+Controller (assuming we have a DataProvider ```$labelDataProvider```
+with models containing ```name``` and ```town``` properties):
 
     use weesee\pdflabel\PdfLabel;
     ...
@@ -50,6 +51,13 @@ Controller:
     ]);
     return $pdfLabel->render();
         
+Credits
+-------
+
+Thanks for your great job which this Yii2-extension is build on:
+
+* [Uskur/PdfLabel](https://github.com/Uskur/PdfLabel)
+* [tecnickcom/TCPDF](https://github.com/tecnickcom/TCPDF)
 
 Author & Licence
 ----------------
