@@ -26,7 +26,7 @@ to the require section of your `composer.json` file.
 Usage
 -----
 
-Once the extension is installed, simply use it in your code by  :
+Once the extension is installed, simply use it in your code by:
 
 View:
 
@@ -41,12 +41,15 @@ Controller:
     use weesee\pdflabel\PdfLabel;
     ...
     public function actionPdfLabelDownload()
-    {
-        $pdfLabel = new PdfLabel();
-        $pdfLabel->addLabel("hello world 1");
-        $pdfLabel->addLabel("hello world 2");
-        $pdfLabel->render();
-    }
+    $pdfLabel = new PdfLabel([
+        'labelType' => '5160',
+        'dataProvider' => $labelDataProvider,
+        'renderLabel' => function($model, $key, $index) {
+            return $model["name"]."\n".$model["town"];
+        },
+    ]);
+    return $pdfLabel->render();
+        
 
 Author & Licence
 ----------------

@@ -1,10 +1,15 @@
 <?php
-namespace weesee\pdflabel;
 
 /**
  * PDFLabel
  * 
+ * @link https://github.com/WeeSee/yii2-pdflabel
+ * @copyright Copyright (c) 2018 WeeSee
+ * @license  https://github.com/WeeSee/yii2-pdflabel/blob/master/LICENSE
  */
+
+namespace weesee\pdflabel;
+
 use yii\base\Component;
 use yii\helpers\Html;
 use weesee\pdflabel\TCPDFLabel;
@@ -13,13 +18,14 @@ class PdfLabel extends Component
 {
 	
 	/**
-	 * Label type to print labes on
+	 * Label name type to print labels on
 	 * @var string
 	 */
-	public $labelType;
+	public $labelName;
 	
 	/**
      * List of label formats extending Uskur/PdfLabel
+     * The key is the label name
      * Use getLabelName() to get all labels
      *
      * @var array
@@ -133,18 +139,25 @@ class PdfLabel extends Component
      */
 	protected $pdfLabel;
 	
+	/**
+	 * @var bool Print border to tes new label formats
+     */
+	public $border = false;
+	
+	
+	
 	public function init()
 	{
 		parent::init();
 		// user provides a custom label type
-		if (is_array($this->labelType))
-			$format = $this->labelType;
+		if (is_array($this->labelName))
+			$format = $this->labelName;
 		// a lable type from this class?
-		elseif (isset(self::LABEL_FORMATS[$this->labelType]))
-			$format = self::LABEL_FORMATS[$this->labelType];
+		elseif (isset(self::LABEL_FORMATS[$this->labelName]))
+			$format = self::LABEL_FORMATS[$this->labelName];
 		// or a label type from PdfLabel class?
-		elseif (isset(TCPDFLabel::LABELS[$this->labelType]))
-			$format = $this->labelType; 
+		elseif (isset(TCPDFLabel::LABELS[$this->labelName]))
+			$format = $this->labelName; 
 		else
 			throw new \yii\base\InvalidConfigException('The "labelType" property must be set.');
 	    if ($this->dataProvider === null) {
@@ -212,9 +225,9 @@ class PdfLabel extends Component
 	public function addLabel($content)
 	{
 		if ($this->asHtml)
-			$this->pdfLabel->addHtmlLabel($content);
+			$this->pdfLabel->addExtendedHtmlLabel($content,$this->border);
 		else
-			$this->pdfLabel->addLabel($content);
+			$this->pdfLabel->addExtendedLabel($content,$this->border);
 		return $this;
 	}
 	
