@@ -19,6 +19,8 @@ use weesee\pdflabel\TCPDFLabel;
  * print labes on PDF. There are multipe label
  * formats supported in letter and A4 format,
  * e.g. Avery 5160.
+ *
+ * @author WeeSee <weesee@web.de>
  */
 class PdfLabel extends Component
 {

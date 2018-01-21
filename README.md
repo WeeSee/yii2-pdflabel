@@ -41,7 +41,7 @@ with models containing ```name``` and ```town``` properties):
 
     use weesee\pdflabel\PdfLabel;
     ...
-    public function actionPdfLabelDownload()
+    public function actionDownloadpdf()
     $pdfLabel = new PdfLabel([
         'labelType' => '5160',
         'dataProvider' => $labelDataProvider,
