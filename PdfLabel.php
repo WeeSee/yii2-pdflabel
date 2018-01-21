@@ -25,6 +25,8 @@ class PdfLabel extends Component
      * @var array
      */
 	const LABEL_FORMATS = [
+		// define your own labels here
+		/*
 		'Avery 9999' => [
 			'paper-size' => 'A4',
 			'unit' => 'mm',
@@ -37,6 +39,7 @@ class PdfLabel extends Component
 			'width' => 66.675,
 			'height' => 25.4
 		],
+		*/
 	];
 	
 	/**
@@ -133,10 +136,15 @@ class PdfLabel extends Component
 	public function init()
 	{
 		parent::init();
-		if (isset(self::LABEL_FORMATS[$this->labelType]))
-			$format = self::LABEL_FORMATS[$this->labelType]; 
+		// user provides a custom label type
+		if (is_array($this->labelType))
+			$format = $this->labelType;
+		// a lable type from this class?
+		elseif (isset(self::LABEL_FORMATS[$this->labelType]))
+			$format = self::LABEL_FORMATS[$this->labelType];
+		// or a label type from PdfLabel class?
 		elseif (isset(TCPDFLabel::LABELS[$this->labelType]))
-			$format = $this->labelType; // PdfLabel-Built-ins
+			$format = $this->labelType; 
 		else
 			throw new \yii\base\InvalidConfigException('The "labelType" property must be set.');
 	    if ($this->dataProvider === null) {
