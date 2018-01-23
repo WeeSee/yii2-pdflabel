@@ -51,6 +51,7 @@ Controller (assuming we have a DataProvider ```$labelDataProvider```
         },
     ]);
     return $pdfLabel->render();
+    
         
 Credits
 -------
@@ -60,7 +61,7 @@ Thanks for your great job which this Yii2-extension is build on:
 * [Uskur/PdfLabel](https://github.com/Uskur/PdfLabel)
 * [tecnickcom/TCPDF](https://github.com/tecnickcom/TCPDF)
 
-Author & Licence
+Author / Licence
 ----------------
 
 WeeSee <weesee@web.de>
