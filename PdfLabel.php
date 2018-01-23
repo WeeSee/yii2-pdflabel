@@ -216,11 +216,10 @@ class PdfLabel extends Component
 			'NewPrint4005' => '2x4 (A4)',
 		];
 		$allLabels = TCPDFLabel::LABELS + self::LABEL_FORMATS;
-		foreach($allLabels as $name => $label) {
-			if (!preg_match("/$pageFormat/",$label['paper-size']))
+		foreach($allLabels as $name => $format) {
+			if (!preg_match("/$pageFormat/",$format['paper-size']))
 				continue;
-			$newName = isset($pdfLabelNames[$name])
-				? $pdfLabelNames[$name] : $name;
+			$newName = is_array($format) ? $name : $pdfLabelNames[$name];
 			$labelNames[$name] = $newName;
 		}
 		return $labelNames;
